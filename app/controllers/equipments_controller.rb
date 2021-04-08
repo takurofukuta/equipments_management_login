@@ -1,5 +1,6 @@
 class EquipmentsController < ApplicationController
   def index
+    @equipments = Equipment.all
   end
 
   def show
@@ -7,4 +8,5 @@ class EquipmentsController < ApplicationController
 
   def edit
   end
+  
 end
