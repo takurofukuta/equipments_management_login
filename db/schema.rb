@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_08_115320) do
+ActiveRecord::Schema.define(version: 2021_04_11_141314) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,12 +23,22 @@ ActiveRecord::Schema.define(version: 2021_04_08_115320) do
     t.integer "purchase_year", null: false
     t.string "asset_num"
     t.integer "price"
+    t.integer "lendings_status", default: 0, null: false
     t.integer "disposal_status", default: 0, null: false
     t.text "remarks"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_equipment_on_user_id"
+  end
+
+  create_table "lendings", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "equipment_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["equipment_id"], name: "index_lendings_on_equipment_id"
+    t.index ["user_id"], name: "index_lendings_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -46,4 +56,6 @@ ActiveRecord::Schema.define(version: 2021_04_08_115320) do
   end
 
   add_foreign_key "equipment", "users"
+  add_foreign_key "lendings", "equipment"
+  add_foreign_key "lendings", "users"
 end
