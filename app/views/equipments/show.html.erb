@@ -1,2 +1,4 @@
-<h1>Equipments#show</h1>
-<p>Find me in app/views/equipments/show.html.erb</p>
+<h1>投稿詳細</h1>
+<p>タイトル <%= @equipment.id %></p>
+<p>内容 <%= @equipment.lab_equipment_name %></p>
+<%= link_to "一覧表示ページへ", equipments_path %>

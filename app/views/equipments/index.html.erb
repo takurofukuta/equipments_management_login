@@ -14,7 +14,25 @@
 <% end %>
 
 <p>備品データ一覧</p>
-<% @equipments.each do |equipment| %>
-<p><%= equipment.id %>:<%= equipment.lab_equipment_name %></p>
-<% end %>
-
+<table>
+  <thead>
+    <tr>
+      <th scope="col">No.</th>
+      <th scope="col">タイトル</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @equipments.each.with_index(1) do |equipment, i| %>
+      <tr>
+        <th scope="row"><%= i %></th>
+        <td><%= equipment.lab_equipment_name %></td>
+        <td>
+          <%= link_to "詳細", equipment %>
+          <!--<#%= link_to "編集", edit_equipment_path(equipment) %>-->
+          <!--<#%= link_to "削除", equipment, method: :delete, data: { confirm: "削除しますか?" } %>-->
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
