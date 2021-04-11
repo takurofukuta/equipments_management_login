@@ -6,7 +6,7 @@ class EquipmentsController < ApplicationController
   end
 
   def create
-    Equipment.create!(equipment_params)
+    current_user.equipments.create!(equipment_params)
     # binding.pry
     redirect_to root_path
   end

@@ -16,16 +16,16 @@ ActiveRecord::Schema.define(version: 2021_04_08_115320) do
   enable_extension "plpgsql"
 
   create_table "equipment", force: :cascade do |t|
-    t.string "genre"
-    t.string "lab_equipment_name"
-    t.string "maker_name"
-    t.string "product_name"
-    t.integer "purchase_year"
+    t.string "genre", null: false
+    t.string "lab_equipment_name", null: false
+    t.string "maker_name", null: false
+    t.string "product_name", null: false
+    t.integer "purchase_year", null: false
     t.string "asset_num"
     t.integer "price"
-    t.integer "disposal_status"
+    t.integer "disposal_status", default: 0, null: false
     t.text "remarks"
-    t.bigint "user_id"
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_equipment_on_user_id"
