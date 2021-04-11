@@ -16,6 +16,13 @@ class EquipmentsController < ApplicationController
   end
 
   def edit
+    @equipment = Equipment.find(params[:id])
+  end
+  
+  def update
+    equipment = Equipment.find(params[:id])
+    equipment.update!(equipment_params)
+    redirect_to equipment
   end
   
   private

@@ -1,4 +1,13 @@
 <h1>投稿詳細</h1>
-<p>タイトル <%= @equipment.id %></p>
-<p>内容 <%= @equipment.lab_equipment_name %></p>
+<p> 備品ジャンル:<%= @equipment.genre %></p>
+<p> 研究室用備品名:<%= @equipment.lab_equipment_name %></p>
+<p> メーカー名:<%= @equipment.maker_name %></p>
+<p> 製品名:<%= @equipment.product_name %></p>
+<p> 購入年度:<%= @equipment.purchase_year %></p>
+<p> 資産番号:<%= @equipment.asset_num %></p>
+<p> 値段:<%= @equipment.price %></p>
+<p> 廃棄済?:<%= @equipment.disposal_status %></p>
+<p> 備考:<%= @equipment.remarks %></p>
+<p> データ作成日時:<%= @equipment.created_at %></p>
+<p> データ更新日時:<%= @equipment.updated_at %></p>
 <%= link_to "一覧表示ページへ", equipments_path %>
