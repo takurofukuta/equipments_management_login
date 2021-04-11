@@ -23,7 +23,8 @@
       <th scope="col">製品名</th>
       <th scope="col">購入年度</th>
       <th scope="col">資産番号</th>
-      <th scope="col">操作</th>
+      <th scope="col">ステータス</th>
+      <th scope="col"></th>
     </tr>
   </thead>
   <tbody>
@@ -35,6 +36,20 @@
         <td><%= equipment.product_name %></td>
         <td><%= equipment.purchase_year %></td>
         <td><%= equipment.asset_num %></td>
+        <td>
+          <% if equipment.lendings_status == 0 %>
+            返却済
+          <% elsif equipment.lendings_status == 1 %>
+            貸出中
+          <% end %>
+          /
+          <% if equipment.disposal_status == 0 %>
+            未廃棄
+          <% elsif equipment.disposal_status == 1 %>
+            廃棄済
+          <% end %>
+          <%=  %>
+        </td>
         <td>
           <%= link_to "詳細", equipment %>
           <%= link_to "編集", edit_equipment_path(equipment) %>
