@@ -8,6 +8,7 @@
 <p> 値段:<%= @equipment.price %></p>
 <p> 廃棄済?:<%= @equipment.disposal_status %></p>
 <p> 備考:<%= @equipment.remarks %></p>
+<p> データ作成者:<%= @equipment.user.user_name %>（<%= @equipment.user.last_name %><%= @equipment.user.first_name %>）</p>
 <p> データ作成日時:<%= @equipment.created_at %></p>
 <p> データ更新日時:<%= @equipment.updated_at %></p>
 <%= link_to "一覧表示ページへ", equipments_path %>
