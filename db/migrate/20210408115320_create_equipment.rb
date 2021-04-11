@@ -10,7 +10,7 @@ class CreateEquipment < ActiveRecord::Migration[6.1]
       t.integer :price
       t.integer :disposal_status, null: false, default: 0
       t.text :remarks
-      t.references :user, null: false, foreign_key: true
+      t.references :user, foreign_key: true, null: false
 
       t.timestamps
     end

@@ -1,4 +1,20 @@
 <h1>Equipments#index</h1>
-<% @equipments.each do |equipment| %>
-<p>equipment.id</p>
+
+<p>備品データの追加</p>
+<%= form_with model: @equipment, url: equipments_path, method: :post, local: true do |f| %>
+  <p>備品ジャンル：<%= f.text_field :genre %></p>
+  <p>研究室用備品名：<%= f.text_field :lab_equipment_name %></p>
+  <p>メーカー名：<%= f.text_field :maker_name %></p>
+  <p>製品名：<%= f.text_field :product_name %></p>
+  <p>購入年度：<%= f.text_field :purchase_year %></p>
+  <p>資産番号：<%= f.text_field :asset_num %></p>
+  <p>金額：<%= f.text_field :price %></p>
+  <p>備考：<%= f.text_field :remarks %></p>
+  <%= f.submit "送信" %>
 <% end %>
+
+<p>備品データ一覧</p>
+<% @equipments.each do |equipment| %>
+<p><%= equipment.id %>:<%= equipment.lab_equipment_name %></p>
+<% end %>
+
