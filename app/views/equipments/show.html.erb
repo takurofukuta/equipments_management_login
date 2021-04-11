@@ -1,4 +1,4 @@
-<h1>投稿詳細</h1>
+<h1>備品データ詳細</h1>
 <p> 備品ジャンル:<%= @equipment.genre %></p>
 <p> 研究室用備品名:<%= @equipment.lab_equipment_name %></p>
 <p> メーカー名:<%= @equipment.maker_name %></p>
@@ -11,4 +11,4 @@
 <p> データ作成者:<%= @equipment.user.user_name %>（<%= @equipment.user.last_name %><%= @equipment.user.first_name %>）</p>
 <p> データ作成日時:<%= @equipment.created_at %></p>
 <p> データ更新日時:<%= @equipment.updated_at %></p>
-<%= link_to "一覧表示ページへ", equipments_path %>
+<%= link_to "編集", edit_equipment_path(@equipment) %>
