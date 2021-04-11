@@ -6,7 +6,13 @@
 <p> 購入年度:<%= @equipment.purchase_year %></p>
 <p> 資産番号:<%= @equipment.asset_num %></p>
 <p> 値段:<%= @equipment.price %></p>
-<p> 廃棄済?:<%= @equipment.disposal_status %></p>
+
+<% if @equipment.disposal_status == 0 %>
+<p>未廃棄</p>
+<% elsif @equipment.disposal_status == 1 %>
+<p>廃棄済み</p>
+<% end %>
+
 <p> 備考:<%= @equipment.remarks %></p>
 <p> データ作成者:<%= @equipment.user.user_name %>（<%= @equipment.user.last_name %><%= @equipment.user.first_name %>）</p>
 <p> データ作成日時:<%= @equipment.created_at %></p>
