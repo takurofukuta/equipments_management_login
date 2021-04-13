@@ -54,7 +54,11 @@
           <%= link_to "詳細", equipment %>
           <%= link_to "編集", edit_equipment_path(equipment) %>
           <%= link_to "削除", equipment, method: :delete, data: { confirm: "削除しますか?" } %>
-          <%# <%= link_to "貸出", equipment, method: :patch %> %>
+          <% if equipment.lendings_status == 0 %>
+            <%= link_to "貸出", lending_path(equipment), method: :patch %>
+          <% elsif equipment.lendings_status == 1 %>
+            <%= link_to "返却", lending_path(equipment), method: :patch %>
+          <% end %>
         </td>
       </tr>
     <% end %>

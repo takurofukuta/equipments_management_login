@@ -1,2 +1,33 @@
-<h1>Lendings#index</h1>
-<p>Find me in app/views/lendings/index.html.erb</p>
+<p>貸出備品一覧</p>
+<table border="1">
+  <thead>
+    <tr>
+      <th scope="col">No.</th>
+      <th scope="col">研究室用備品名</th>
+      <th scope="col">メーカー名</th>
+      <th scope="col">製品名</th>
+      <th scope="col">購入年度</th>
+      <th scope="col">資産番号</th>
+      <th scope="col">借りてる人</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @lendings.each.with_index(1) do |lending, i| %>
+      <tr>
+        <th scope="row"><%= i %></th>
+        <td><%= lending.lab_equipment_name %></td>
+        <td><%= lending.maker_name %></td>
+        <td><%= lending.product_name %></td>
+        <td><%= lending.purchase_year %></td>
+        <td><%= lending.asset_num %></td>
+        <td>
+          <%= lending.user.user_name %>
+        </td>
+        <td>
+          <%= link_to "詳細", equipment_path(lending) %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
