@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
-  get 'lendings/index'
-  root 'equipments#index'
+  root "equipments#index"
   resources :equipments
+  resources :lendings
   devise_for :users, controllers: {
-    sessions: 'users/sessions',
-    registrations: 'users/registrations'
-  }
+            sessions: "users/sessions",
+            registrations: "users/registrations",
+          }
 end

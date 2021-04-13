@@ -1,5 +1,4 @@
 class EquipmentsController < ApplicationController
-
   def index
     @equipments = Equipment.all
     @equipment = Equipment.new
@@ -10,7 +9,7 @@ class EquipmentsController < ApplicationController
     # binding.pry
     redirect_to root_path
   end
-  
+
   def show
     @equipment = Equipment.find(params[:id])
   end
@@ -18,23 +17,29 @@ class EquipmentsController < ApplicationController
   def edit
     @equipment = Equipment.find(params[:id])
   end
-  
+
   def update
     equipment = Equipment.find(params[:id])
     equipment.update!(equipment_params)
     redirect_to equipment
   end
-  
+
+  def update_lendings_status
+    equipment = Equipment.find(params[:id])
+    binding.pry
+    # equipment.update!(equipment_params)
+    # redirect_to equipment
+  end
+
   def destroy
     equipment = Equipment.find(params[:id])
     equipment.destroy!
     redirect_to root_path
   end
-  
+
   private
-  
+
   def equipment_params
     params.require(:equipment).permit(:genre, :lab_equipment_name, :maker_name, :product_name, :purchase_year, :asset_num, :price, :disposal_status, :remarks)
   end
-  
 end
