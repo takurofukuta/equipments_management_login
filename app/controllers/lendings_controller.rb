@@ -7,6 +7,9 @@ class LendingsController < ApplicationController
     equipment = Equipment.find(params[:id])
     if equipment.lendings_status == 0
       equipment.lendings_status = 1
+      lending = Lending.new
+      lending.save
+      # binding.pry
     elsif equipment.lendings_status == 1
       equipment.lendings_status = 0
     end
