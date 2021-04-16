@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'operationhistories/index'
   root "equipments#index"
   resources :equipments
   resources :lendings
