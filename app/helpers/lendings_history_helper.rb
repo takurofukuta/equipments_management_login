@@ -1,0 +1,2 @@
+module LendingsHistoryHelper
+end
