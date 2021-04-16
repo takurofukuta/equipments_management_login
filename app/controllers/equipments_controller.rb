@@ -6,6 +6,7 @@ class EquipmentsController < ApplicationController
 
   def create
     current_user.equipments.create!(equipment_params)
+    OperationHistory.create_log(current_user.id, "#{equipment_params[:lab_equipment_name]}を登録しました")
     redirect_to root_path
   end
 
