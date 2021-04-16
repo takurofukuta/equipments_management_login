@@ -21,12 +21,14 @@ class EquipmentsController < ApplicationController
   def update
     equipment = Equipment.find(params[:id])
     equipment.update!(equipment_params)
+    OperationHistory.create_log(current_user.id, "#{equipment_params[:lab_equipment_name]}を編集しました")
     redirect_to equipment
   end
 
   def destroy
     equipment = Equipment.find(params[:id])
     equipment.destroy!
+    OperationHistory.create_log(current_user.id, "#{equipment.lab_equipment_name}を削除しました")
     redirect_to root_path
   end
 
