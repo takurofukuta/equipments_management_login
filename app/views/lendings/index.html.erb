@@ -16,11 +16,11 @@
     <% @lendings.each.with_index(1) do |lending, i| %>
       <tr>
         <th scope="row"><%= i %></th>
-        <td><%= lending.lab_equipment_name %></td>
-        <td><%= lending.maker_name %></td>
-        <td><%= lending.product_name %></td>
-        <td><%= lending.purchase_year %></td>
-        <td><%= lending.asset_num %></td>
+        <td><%= lending.equipment.lab_equipment_name %></td>
+        <td><%= lending.equipment.maker_name %></td>
+        <td><%= lending.equipment.product_name %></td>
+        <td><%= lending.equipment.purchase_year %></td>
+        <td><%= lending.equipment.asset_num %></td>
         <td>
           <%= lending.user.user_name %>
         </td>

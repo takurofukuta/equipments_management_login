@@ -24,13 +24,6 @@ class EquipmentsController < ApplicationController
     redirect_to equipment
   end
 
-  def update_lendings_status
-    equipment = Equipment.find(params[:id])
-    binding.pry
-    # equipment.update!(equipment_params)
-    # redirect_to equipment
-  end
-
   def destroy
     equipment = Equipment.find(params[:id])
     equipment.destroy!
