@@ -23,7 +23,6 @@ ActiveRecord::Schema.define(version: 2021_04_11_141314) do
     t.integer "purchase_year", null: false
     t.string "asset_num"
     t.integer "price"
-    t.integer "lendings_status", default: 0, null: false
     t.integer "disposal_status", default: 0, null: false
     t.text "remarks"
     t.bigint "user_id", null: false
@@ -33,6 +32,7 @@ ActiveRecord::Schema.define(version: 2021_04_11_141314) do
   end
 
   create_table "lendings", force: :cascade do |t|
+    t.integer "lendings_status", default: 0, null: false
     t.bigint "user_id", null: false
     t.bigint "equipment_id", null: false
     t.datetime "created_at", precision: 6, null: false

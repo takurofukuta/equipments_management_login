@@ -1,4 +1,5 @@
 class Equipment < ApplicationRecord
+  has_one :lending
   belongs_to :user, optional: true
   validates :genre, presence: true
   validates :lab_equipment_name, presence: true

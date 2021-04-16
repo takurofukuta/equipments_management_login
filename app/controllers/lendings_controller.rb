@@ -1,6 +1,7 @@
 class LendingsController < ApplicationController
   def index
-    @lendings = Equipment.where(lendings_status: 1)
+    # @lendings = Equipment.where(lendings_status: 1)
+    @lendings = Lending.all
   end
 
   def update

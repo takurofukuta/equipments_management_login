@@ -16,14 +16,14 @@
       <%= link_to "備品データ一覧", equipments_path %>
       <%= link_to "貸出状況", lendings_path %>
       <!--<#%= link_to "操作履歴", equipments_path %>-->
+      現在のアカウント:
+      <%= current_user.user_name %>
+      <%= current_user.last_name %>
+      <%= current_user.first_name %>
     <% else %>
       <%= link_to "新規登録", new_user_registration_path %>
       <%= link_to "ログイン", new_user_session_path %>
     <% end %>
-    現在のアカウント:
-    <%= current_user.user_name %>
-    <%= current_user.last_name %>
-    <%= current_user.first_name %>
     <%= yield %>
   </body>
 </html>
