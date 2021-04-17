@@ -1,5 +1,5 @@
 class Equipment < ApplicationRecord
-  has_one :lending
+  has_one :lending, dependent: :destroy
   belongs_to :user, optional: true
   validates :genre, presence: true
   validates :lab_equipment_name, presence: true
