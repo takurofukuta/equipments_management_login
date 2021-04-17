@@ -54,7 +54,7 @@ class EquipmentsController < ApplicationController
 
   def send_equipments_csv(equipments)
     csv_data = CSV.generate do |csv|
-      column_names = %w(備品ジャンル 研究室用備品名 メーカー名 製品名 購入年度 資産番号 値段 備考)
+      column_names = %w(備品ジャンル 研究室用備品名 メーカー名 製品名 購入年度 資産番号 値段 備考 データ追加日 データ追加者)
       csv << column_names
       equipments.each do |equipment|
         column_values = [
@@ -65,7 +65,9 @@ class EquipmentsController < ApplicationController
           equipment.purchase_year,
           equipment.asset_num,
           equipment.price,
-          equipment.remarks
+          equipment.remarks,
+          equipment.created_at,
+          equipment.user.user_name
         ]
         csv << column_values
       end
