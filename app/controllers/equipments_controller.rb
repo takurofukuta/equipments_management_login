@@ -1,10 +1,21 @@
 class EquipmentsController < ApplicationController
+  require 'csv'
+
   PER_PAGE = 20
 
   def index
     @q = Equipment.ransack(params[:q])
     @equipments = @q.result.page(params[:page]).per(PER_PAGE)
     @equipment = Equipment.new
+
+    @equipments_csv = Equipment.all
+    respond_to do |format|
+      format.html
+      format.csv do |csv|
+      send_equipments_csv(@equipments_csv)
+      end
+    end
+
   end
 
   def create
@@ -39,5 +50,26 @@ class EquipmentsController < ApplicationController
 
   def equipment_params
     params.require(:equipment).permit(:genre, :lab_equipment_name, :maker_name, :product_name, :purchase_year, :asset_num, :price, :disposal_status, :remarks)
+  end
+
+  def send_equipments_csv(equipments)
+    csv_data = CSV.generate do |csv|
+      column_names = %w(備品ジャンル 研究室用備品名 メーカー名 製品名 購入年度 資産番号 値段 備考)
+      csv << column_names
+      equipments.each do |equipment|
+        column_values = [
+          equipment.genre,
+          equipment.lab_equipment_name,
+          equipment.maker_name,
+          equipment.product_name,
+          equipment.purchase_year,
+          equipment.asset_num,
+          equipment.price,
+          equipment.remarks
+        ]
+        csv << column_values
+      end
+    end
+    send_data(csv_data, filename: "備品一覧.csv")
   end
 end
