@@ -18,7 +18,7 @@
 <table border="1">
   <thead>
     <tr>
-      <th scope="col">No.</th>
+      <th scope="col">id.</th>
       <th scope="col">研究室用備品名</th>
       <th scope="col">メーカー名</th>
       <th scope="col">製品名</th>
@@ -31,7 +31,7 @@
   <tbody>
     <% @equipments.each.with_index(1) do |equipment, i| %>
       <tr>
-        <th scope="row"><%= i %></th>
+        <th scope="row"><%= equipment.id %></th>
         <td><%= equipment.lab_equipment_name %></td>
         <td><%= equipment.maker_name %></td>
         <td><%= equipment.product_name %></td>
