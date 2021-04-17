@@ -1,7 +1,7 @@
 class LendingsController < ApplicationController
   def index
     # @lendings = Equipment.where(lendings_status: 1)
-    @lendings = Lending.where(lendings_status: 1)
+    @lendings = Lending.includes(:user, :equipment).where(lendings_status: 1) #.includes(:equipment)
   end
 
   def update
