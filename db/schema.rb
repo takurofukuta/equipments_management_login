@@ -45,8 +45,10 @@ ActiveRecord::Schema.define(version: 2021_04_18_084518) do
   create_table "operation_histories", force: :cascade do |t|
     t.integer "content"
     t.bigint "user_id", null: false
+    t.bigint "equipment_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["equipment_id"], name: "index_operation_histories_on_equipment_id"
     t.index ["user_id"], name: "index_operation_histories_on_user_id"
   end
 
@@ -68,5 +70,6 @@ ActiveRecord::Schema.define(version: 2021_04_18_084518) do
   add_foreign_key "equipment", "users"
   add_foreign_key "lendings", "equipment"
   add_foreign_key "lendings", "users"
+  add_foreign_key "operation_histories", "equipment"
   add_foreign_key "operation_histories", "users"
 end

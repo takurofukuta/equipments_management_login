@@ -1,5 +1,6 @@
 class OperationHistory < ApplicationRecord
   belongs_to :user
+  belongs_to :equipment
 
   class << self
     def create_log(user_id, content)
