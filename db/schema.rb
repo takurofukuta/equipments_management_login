@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 2021_04_18_084518) do
   enable_extension "plpgsql"
 
   create_table "equipment", force: :cascade do |t|
-    t.string "genre", null: false
+    t.integer "genre", null: false
     t.string "lab_equipment_name", null: false
     t.string "maker_name", null: false
     t.string "product_name", null: false

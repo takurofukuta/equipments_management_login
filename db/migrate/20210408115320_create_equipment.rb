@@ -1,7 +1,7 @@
 class CreateEquipment < ActiveRecord::Migration[6.1]
   def change
     create_table :equipment do |t|
-      t.string :genre, null: false
+      t.integer :genre, null: false
       t.string :lab_equipment_name, null: false
       t.string :maker_name, null: false
       t.string :product_name, null: false
