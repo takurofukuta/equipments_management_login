@@ -13,5 +13,6 @@ class Equipment < ApplicationRecord
     tera: 2,
     camera: 3,
     experiment: 4,
+    others: 5,
   }
 end
