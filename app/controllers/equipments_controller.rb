@@ -82,7 +82,7 @@ class EquipmentsController < ApplicationController
   end
 
   def sort_column
-    Stock.column_names.include?(params[:sort]) ? params[:sort] : 'id'
+    Equipment.column_names.include?(params[:sort]) ? params[:sort] : 'id'
   end
 
 
