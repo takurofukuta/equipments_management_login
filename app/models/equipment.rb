@@ -6,4 +6,12 @@ class Equipment < ApplicationRecord
   validates :maker_name, presence: true
   validates :product_name, presence: true
   validates :purchase_year, presence: true
+
+  enum genre: {
+    pc: 0,
+    note_pc: 1,
+    tera: 2,
+    camera: 3,
+    experiment: 4,
+  }
 end
