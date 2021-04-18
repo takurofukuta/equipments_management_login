@@ -4,8 +4,8 @@
   <p>備品データの追加</p>
   <%= form_with model: @equipment, url: equipments_path, method: :post, local: true do |f| %>
   <div>
-    <%= f.label :genre, '備品ジャンル' %>
-    <%= f.select :genre, Equipment.genres.keys %>
+    <%= f.label :genre %>
+    <%= f.select :genre, Equipment.genres_i18n.invert %>
     <%# <p>備品ジャンル：<%= f.text_field :genre %></p>
   </div>
     <p>研究室用備品名：<%= f.text_field :lab_equipment_name %></p>

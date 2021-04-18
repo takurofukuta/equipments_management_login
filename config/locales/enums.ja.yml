@@ -1,6 +1,6 @@
 ja:
   enums:
-    post:
+    equipment:
       genre:
         pc: "PC"
         note_pc: "ノートPC"
