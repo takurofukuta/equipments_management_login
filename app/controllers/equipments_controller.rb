@@ -1,4 +1,6 @@
 class EquipmentsController < ApplicationController
+  helper_method :sort_column, :sort_direction
+  
   require 'csv'
 
   PER_PAGE = 20
@@ -74,4 +76,14 @@ class EquipmentsController < ApplicationController
     end
     send_data(csv_data, filename: "備品一覧.csv")
   end
+
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : 'asc'
+  end
+
+  def sort_column
+    Stock.column_names.include?(params[:sort]) ? params[:sort] : 'id'
+  end
+
+
 end
