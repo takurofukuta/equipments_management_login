@@ -17,5 +17,9 @@
 <p> データ作成者:<%= @equipment.user.user_name %>（<%= @equipment.user.last_name %><%= @equipment.user.first_name %>）</p>
 <p> データ作成日時:<%= @equipment.created_at %></p>
 <p> データ更新日時:<%= @equipment.updated_at %></p>
+
+<% if current_user.admin? %>
 <%= link_to "編集", edit_equipment_path(@equipment) %>
 <%= link_to "削除", @equipment, method: :delete, data: { confirm: "削除しますか?" } %>
+<% else %>
+<% end %>

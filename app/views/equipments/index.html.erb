@@ -1,16 +1,19 @@
 <h1>Equipments#index</h1>
 
-<p>備品データの追加</p>
-<%= form_with model: @equipment, url: equipments_path, method: :post, local: true do |f| %>
-  <p>備品ジャンル：<%= f.text_field :genre %></p>
-  <p>研究室用備品名：<%= f.text_field :lab_equipment_name %></p>
-  <p>メーカー名：<%= f.text_field :maker_name %></p>
-  <p>製品名：<%= f.text_field :product_name %></p>
-  <p>購入年度：<%= f.text_field :purchase_year %></p>
-  <p>資産番号：<%= f.text_field :asset_num %></p>
-  <p>金額：<%= f.text_field :price %></p>
-  <p>備考：<%= f.text_field :remarks %></p>
-  <%= f.submit "送信" %>
+<% if current_user.admin? %>
+  <p>備品データの追加</p>
+  <%= form_with model: @equipment, url: equipments_path, method: :post, local: true do |f| %>
+    <p>備品ジャンル：<%= f.text_field :genre %></p>
+    <p>研究室用備品名：<%= f.text_field :lab_equipment_name %></p>
+    <p>メーカー名：<%= f.text_field :maker_name %></p>
+    <p>製品名：<%= f.text_field :product_name %></p>
+    <p>購入年度：<%= f.text_field :purchase_year %></p>
+    <p>資産番号：<%= f.text_field :asset_num %></p>
+    <p>金額：<%= f.text_field :price %></p>
+    <p>備考：<%= f.text_field :remarks %></p>
+    <%= f.submit "送信" %>
+  <% end %>
+<% else %>
 <% end %>
 
 <p>備品データ一覧</p>
@@ -30,7 +33,10 @@
   <%= f.submit "検索" %>
 <% end %>
 
+<% if current_user.admin? %>
 <%= link_to "CSVエクスポート",equipments_path(format: :csv) %>
+<% else %>
+<% end %>
 
 <table border="1">
   <thead>
@@ -71,12 +77,17 @@
           <%=  %>
         </td>
         <td>
+        <% if current_user.admin? %>
           <%= link_to "詳細", equipment %>
           <%= link_to "編集", edit_equipment_path(equipment) %>
           <%= link_to "削除", equipment, method: :delete, data: { confirm: "削除しますか?" } %>
+        <% else %>
+        <% end %>
           <% if equipment.lendings_status == 0 %>
+            <%= link_to "詳細", equipment %>
             <%= link_to "貸出", lending_path(equipment), method: :patch %>
           <% elsif equipment.lendings_status == 1 %>
+            <%= link_to "詳細", equipment %>
           <% end %>
         </td>
       </tr>
