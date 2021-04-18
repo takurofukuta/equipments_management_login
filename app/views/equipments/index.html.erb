@@ -24,8 +24,8 @@
 <%= paginate @equipments %>
 
 <%= search_form_for @q, url: equipments_path do |f| %>
-  <%= f.label :genre_cont, "備品ジャンル" %>
-  <%= f.search_field :genre_cont %>
+  <%= f.label :genre_eq, "備品ジャンル" %>
+  <%= f.search_field :genre_eq %>
   <%= f.label :lab_equipment_name_cont, "研究室用備品名" %>
   <%= f.search_field :lab_equipment_name_cont %>
   <%= f.label :maker_name_eq, "メーカー名" %>
