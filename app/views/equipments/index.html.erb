@@ -3,7 +3,11 @@
 <% if current_user.admin? %>
   <p>備品データの追加</p>
   <%= form_with model: @equipment, url: equipments_path, method: :post, local: true do |f| %>
-    <p>備品ジャンル：<%= f.text_field :genre %></p>
+  <div>
+    <%= f.label :genre, '備品ジャンル' %>
+    <%= f.select :genre, Equipment.genres.keys %>
+    <%# <p>備品ジャンル：<%= f.text_field :genre %></p>
+  </div>
     <p>研究室用備品名：<%= f.text_field :lab_equipment_name %></p>
     <p>メーカー名：<%= f.text_field :maker_name %></p>
     <p>製品名：<%= f.text_field :product_name %></p>
