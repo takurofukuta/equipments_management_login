@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 2021_04_18_084518) do
   end
 
   create_table "operation_histories", force: :cascade do |t|
-    t.text "content"
+    t.integer "content"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

@@ -22,7 +22,7 @@ class EquipmentsController < ApplicationController
 
   def create
     current_user.equipments.create!(equipment_params)
-    OperationHistory.create_log(current_user.id, "#{equipment_params[:lab_equipment_name]}を登録しました")
+    OperationHistory.create_log(current_user.id, 0)
     redirect_to root_path
   end
 
@@ -37,14 +37,14 @@ class EquipmentsController < ApplicationController
   def update
     equipment = Equipment.find(params[:id])
     equipment.update!(equipment_params)
-    OperationHistory.create_log(current_user.id, "#{equipment_params[:lab_equipment_name]}を編集しました")
+    OperationHistory.create_log(current_user.id, 1)
     redirect_to equipment
   end
 
   def destroy
     equipment = Equipment.find(params[:id])
     equipment.destroy!
-    OperationHistory.create_log(current_user.id, "#{equipment.lab_equipment_name}を削除しました")
+    OperationHistory.create_log(current_user.id, 2)
     redirect_to root_path
   end
 
