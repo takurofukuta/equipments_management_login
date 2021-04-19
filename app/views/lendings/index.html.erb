@@ -30,7 +30,7 @@
         </td>
         <td><%= lending.created_at %></td>
         <td>
-          <%= link_to "詳細", equipment_path(lending) %>
+          <%= link_to "詳細", equipment_path(lending.equipment) %>
           <% if lending.lendings_status == 0 %>
           <% elsif lending.lendings_status == 1 %>
             <% if current_user.id == lending.user.id %>
