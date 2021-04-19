@@ -6,8 +6,8 @@ class LendingsController < ApplicationController
 
   def update
     #貸出・返却ボタンを押した時の処理
-
-    equipment = Equipment.find(params[:id])
+    lending = Lending.find(params[:id])
+    equipment = Equipment.find(lending.equipment_id)
 
     #備品一覧ページの貸出ボタンを押した時の処理
     if equipment.lendings_status == 0
@@ -18,7 +18,6 @@ class LendingsController < ApplicationController
 
       #貸出状況ページの返却ボタンを押した時の処理
     elsif equipment.lendings_status == 1
-      lending = Lending.find(params[:id])
       equipment.lendings_status = 0
       lending.lendings_status = 0
       equipment.save
