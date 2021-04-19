@@ -22,8 +22,8 @@ class EquipmentsController < ApplicationController
 
   def create
     current_user.equipments.create!(equipment_params)
-    binding.pry
-    OperationHistory.create_log(current_user.id, 1, 0)
+    lab_equipment_name = equipment_params[:lab_equipment_name]
+    OperationHistory.create_log(current_user.id, lab_equipment_name, 0)
     redirect_to root_path
   end
   
@@ -38,13 +38,15 @@ class EquipmentsController < ApplicationController
   def update
     equipment = Equipment.find(params[:id])
     equipment.update!(equipment_params)
-    OperationHistory.create_log(current_user.id, equipment.id, 1)
+    lab_equipment_name = equipment.lab_equipment_name
+    OperationHistory.create_log(current_user.id, lab_equipment_name, 1)
     redirect_to equipment
   end
-
+  
   def destroy
     equipment = Equipment.find(params[:id])
-    OperationHistory.create_log(current_user.id, equipment.id, 2)
+    lab_equipment_name = equipment.lab_equipment_name
+    OperationHistory.create_log(current_user.id, lab_equipment_name, 2)
     equipment.destroy!
     redirect_to root_path
   end
