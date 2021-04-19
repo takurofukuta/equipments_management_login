@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 2021_04_18_084518) do
   create_table "lendings", force: :cascade do |t|
     t.integer "lendings_status", default: 0, null: false
     t.bigint "user_id", null: false
-    t.bigint "equipment_id", null: false
+    t.bigint "equipment_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["equipment_id"], name: "index_lendings_on_equipment_id"
@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 2021_04_18_084518) do
   create_table "operation_histories", force: :cascade do |t|
     t.integer "content"
     t.bigint "user_id", null: false
-    t.bigint "equipment_id", null: false
+    t.bigint "equipment_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["equipment_id"], name: "index_operation_histories_on_equipment_id"

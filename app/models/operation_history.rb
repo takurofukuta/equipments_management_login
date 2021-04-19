@@ -3,8 +3,8 @@ class OperationHistory < ApplicationRecord
   belongs_to :equipment
 
   class << self
-    def create_log(user_id, content)
-      OperationHistory.create!(user_id: user_id, content: content)
+    def create_log(user_id, equipment_id, content)
+      OperationHistory.create!(user_id: user_id, equipment_id: equipment_id, content: content)
     end
   end
 

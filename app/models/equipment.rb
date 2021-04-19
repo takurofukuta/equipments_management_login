@@ -1,6 +1,6 @@
 class Equipment < ApplicationRecord
-  has_one :lending, dependent: :destroy
-  has_one :operation_histories
+  has_one :lending, dependent: :nullify
+  has_one :operation_history, dependent: :nullify
   belongs_to :user, optional: true
   validates :genre, presence: true
   validates :lab_equipment_name, presence: true
