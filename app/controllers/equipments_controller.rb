@@ -9,7 +9,6 @@ class EquipmentsController < ApplicationController
     @q = Equipment.ransack(params[:q])
     @equipments = @q.result.page(params[:page]).per(PER_PAGE).order("#{sort_column} #{sort_direction}")
     @equipment = Equipment.new
-
     @equipments_csv = Equipment.all
     respond_to do |format|
       format.html
