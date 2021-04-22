@@ -40,6 +40,7 @@
 <table border="1">
   <thead>
     <tr>
+
       <th scope="col"><%= sort_order "id", "id" %></th>
       <th scope="col"><%= sort_order "genre", "備品ジャンル" %></th>
       <th scope="col"><%= sort_order "lab_equipment_name", "研究室用備品名" %></th>
@@ -54,7 +55,7 @@
   <tbody>
     <% @equipments.each.with_index(1) do |equipment, i| %>
       <tr>
-        <th scope="row"><%= equipment.id %></th>
+        <th><%= equipment.id %></th>
         <td><%= equipment.genre_i18n %></td>
         <td><%= equipment.lab_equipment_name %></td>
         <td><%= equipment.maker_name %></td>

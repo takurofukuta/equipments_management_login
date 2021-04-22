@@ -19,6 +19,7 @@
       <%= current_user.user_name %>
       <%= current_user.last_name %>
       <%= current_user.first_name %>
+      <button type="button" class="btn btn-primary">Primary</button>
       <% if current_user.admin? %>
         /追加・編集・削除権限有り(OA係)
         <%= link_to "操作履歴", operationhistories_index_path %>
