@@ -34,7 +34,7 @@
           <% if lending.lendings_status == 0 %>
           <% elsif lending.lendings_status == 1 %>
             <% if current_user.id == lending.user.id %>
-              <%= link_to "返却", lending_path(lending), method: :patch %>
+              <%= link_to "返却", {controller: "lendings", action: "return", id: lending}, method: :patch %>
             <% end %>
           <% end %>
         </td>

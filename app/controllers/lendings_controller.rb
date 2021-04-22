@@ -1,28 +1,28 @@
 class LendingsController < ApplicationController
   def index
-    # @lendings = Equipment.where(lendings_status: 1)
-    @lendings = Lending.includes(:user, :equipment).where(lendings_status: 1) #.includes(:equipment)
+    @lendings = Lending.includes(:user, :equipment).where(lendings_status: 1)
   end
 
-  def update
-    #貸出・返却ボタンを押した時の処理
+  #備品一覧ページの貸出ボタンを押した時の処理
+  def lending
+    equipment = Equipment.find(params[:id])
+    equipment.lendings_status = 1
+    equipment.save
+
+    Lending.create!(user_id: current_user.id, equipment_id: equipment.id, lendings_status: 1)
+    redirect_to root_path
+  end
+
+  #貸出状況ページの返却ボタンを押した時の処理
+  def return
     lending = Lending.find(params[:id])
+    lending.lendings_status = 0
+    lending.save
+
     equipment = Equipment.find(lending.equipment_id)
+    equipment.lendings_status = 0
+    equipment.save
 
-    #備品一覧ページの貸出ボタンを押した時の処理
-    if equipment.lendings_status == 0
-      equipment.lendings_status = 1
-      Lending.create!(user_id: current_user.id, equipment_id: equipment.id, lendings_status: 1)
-      equipment.save
-      redirect_to root_path
-
-      #貸出状況ページの返却ボタンを押した時の処理
-    elsif equipment.lendings_status == 1
-      equipment.lendings_status = 0
-      lending.lendings_status = 0
-      equipment.save
-      lending.save
-      redirect_to lendings_path
-    end
+    redirect_to lendings_path
   end
 end

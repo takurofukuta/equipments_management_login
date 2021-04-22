@@ -54,7 +54,17 @@ class EquipmentsController < ApplicationController
   private
 
   def equipment_params
-    params.require(:equipment).permit(:genre, :lab_equipment_name, :maker_name, :product_name, :purchase_year, :asset_num, :price, :disposal_status, :remarks)
+    params.require(:equipment).permit(
+      :genre, 
+      :lab_equipment_name, 
+      :maker_name, 
+      :product_name, 
+      :purchase_year, 
+      :asset_num, 
+      :price, 
+      :lendings_status, 
+      :disposal_status, 
+      :remarks)
   end
 
   def send_equipments_csv(equipments)
