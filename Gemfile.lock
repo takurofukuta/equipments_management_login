@@ -88,6 +88,8 @@ GEM
       responders
       warden (~> 1.2.3)
     devise-bootstrap-views (1.1.0)
+    devise-i18n (1.9.3)
+      devise (>= 4.7.1)
     enum_help (0.0.17)
       activesupport (>= 3.0.0)
     erubi (1.10.0)
@@ -254,6 +256,7 @@ DEPENDENCIES
   capybara (>= 3.26)
   devise
   devise-bootstrap-views
+  devise-i18n
   enum_help
   faker
   jbuilder (~> 2.7)
