@@ -87,6 +87,7 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    devise-bootstrap-views (1.1.0)
     enum_help (0.0.17)
       activesupport (>= 3.0.0)
     erubi (1.10.0)
@@ -252,6 +253,7 @@ DEPENDENCIES
   byebug
   capybara (>= 3.26)
   devise
+  devise-bootstrap-views
   enum_help
   faker
   jbuilder (~> 2.7)
